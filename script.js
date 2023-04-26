@@ -9,6 +9,7 @@ body.addEventListener("mouseup", () => {
 // let columns = 16;
 
 let eraser = false;
+let gridBorder;
 
 firstLoad()
 
@@ -23,6 +24,7 @@ function firstLoad(){
 
 let isPressed = false;
 function genGrid(columns, rows){
+    gridBorder = true
     grid.style.display = "grid";
     grid.style.setProperty("grid-template-columns", `repeat(${columns},1fr)`);
     grid.style.setProperty('grid-template-rows', `repeat(${rows},1fr)`);
@@ -30,6 +32,7 @@ function genGrid(columns, rows){
     for(i = 0; i< columns*rows; i++){
         let div = document.createElement("div");
         div.classList.add("grid-item")
+        div.classList.add("grid-border")
         div.setAttribute("draggable", "false")
         div.addEventListener("mousedown", () => {
             isPressed=true;
@@ -50,11 +53,46 @@ function genGrid(columns, rows){
     }
 }
 
+// disabled as is not complete
+
+// function toggleEraser(){
+//     let gridItems = document.getElementsByClassName('grid-item')
+//     if(eraser == false){
+//         console.log(eraser)
+//         return eraser = true
+//     }
+//     if(eraser == true ) {
+//         console.log(eraser)
+//         return eraser = false
+//     }
+
+// }
+
+// if (eraser){
+//     e.target.style.backgroundColor = '';
+
+// }
 
 
 
+function toggleGrid(){
+    let gridItems = document.getElementsByClassName('grid-item')
 
+    if(gridBorder == true) {
+        for(var i = 0; i < gridItems.length; i++){
+            gridItems[i].setAttribute('class', 'grid-item'); 
+        }
+        return gridBorder = false;
+    }
 
+    if(gridBorder == false ){
+        for(var i = 0; i < gridItems.length; i++){
+            gridItems[i].setAttribute('class', 'grid-item grid-border'); 
+        }
+        return gridBorder =true
+    }
+
+}
 
 function clearGrid(){
     let gridItems = document.getElementsByClassName('grid-item')

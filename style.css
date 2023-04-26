@@ -34,6 +34,12 @@ body {
     justify-content: center;
 }
 
+.toggleGrid{
+    margin-top: 25px;
+    width: 250px;
+    height: 45px;
+}
+
 .clearBtn{
     margin-top: 25px;
     width: 250px;
@@ -57,4 +63,10 @@ body {
     background-color: gray;
     align-items:center;
     border-radius: 2%;
+}
+
+.grid-border {
+    border-width: 0px 1px 1px 0px;
+    border-style: solid;
+    border-color: grey;
 }

@@ -2,7 +2,7 @@
 
 This project demonstrates DOM Manipulation skills.
 
-The user is able to select the frid size from the slider, and clear the canvas.
+The user is able to; select the grid size from the slider, clear the canvas, toggle the grid.
 
 More functionality too come!
 
