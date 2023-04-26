@@ -11,22 +11,34 @@
 </head>
 <body>
     
-    <div class="control-panel">
-        <form id="form" onsubmit="return false;">
-            pixels per side:
-            <input type="text" id="pps" />
-            <button onclick="setPPS();">Submit</button>
-        </form>
-        <button class="clearBtn" onclick="clearGrid()">Clear</button>
+    <header class="header">
+        <h1>Etch-&-Sketch</h1>
+    </header>
 
+    <main class="main-container">
+        <div class="control-panel">    
+            <div class="grid-size-selector">
+                <div class="slider-container">
+                    <input type="range" value="16" min="1" max="64" id="range-slider" onmousemove="rangeSliderValue(this.value)" onchange="rangeSlider(this.value)">
+                </div>
+                <div class="grid-size">
+                    Grid size:&nbsp
+                    <span id="range-value"></span>
+                    &nbspx&nbsp
+                    <span id="range-value"></span>
+                </div>
+            </div>
 
-    </div>
-
-
-    <div class="grid-container">
-        <div class="grid-div" ondragstart="return false;">
+            <button class="clearBtn" onclick="clearGrid()">Clear</button>
         </div>
-    </div>
+    
+    
+        <div class="grid-container">
+            <div class="grid-div" ondragstart="return false;">
+            </div>
+        </div>
+    </main>
+
 
 </body>
 </html>
