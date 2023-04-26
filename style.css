@@ -1,18 +1,60 @@
 body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+} 
+
+.header {
+    display: flex;
+    justify-content: center;
+    margin-top: 75px;
 }
-.grid-div{
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+.control-panel {
+    border: 25px;
+    border-style: solid;
+    border-color: grey;
+    border-radius: 1%;
+    background-color: grey;
+    width: 250px;
+}
+
+#range-slider {
+    width: 250px;
+}
+
+.grid-size{
+    display: flex;
+    justify-content: center;
+}
+
+.clearBtn{
+    margin-top: 25px;
+    width: 250px;
+    height: 45px;
+}
+
+
+.grid-div {
     width: 500px;
     height: 500px;
+    max-width: 500px;
+    max-height: 500px;
     background-color: white;
 }
 
-.grid-container{
+.grid-container {
     display: flex;
     justify-content: center;
     width: 550px;
     height: 550px;
     background-color: gray;
     align-items:center;
+    border-radius: 2%;
 }
