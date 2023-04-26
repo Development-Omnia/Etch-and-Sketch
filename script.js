@@ -1,7 +1,7 @@
 let grid = document.querySelector(".grid-div");
 let grids = document.querySelector(".grids")
 let body = document.querySelector("body")
-let colour = "black";
+let colour = "#000000";
 
 body.addEventListener("mouseup", () => {
     isPressed=false;
@@ -58,12 +58,12 @@ function genGrid(columns, rows){
 function toggleEraser(){
     let eraserButton = document.getElementById('eraserBtn')
     if(eraser == false){
-        colour = "white";
+        colour = "#ffffff";
         eraserButton.setAttribute("class", "btn pressed");
         return eraser = true
     }
     if(eraser == true ) {
-        colour = "black";
+        colour = "#000000";
         eraserButton.setAttribute("class", "btn");
         return eraser = false
     }
@@ -138,3 +138,10 @@ function setPPS(amt) {
 
     genGrid(pps,pps);
 }
+
+
+//colour picker utility
+let colorPicker = document.getElementById("colorPicker");
+colorPicker.addEventListener('change', (e) => {
+    colour = e.target.value;
+});

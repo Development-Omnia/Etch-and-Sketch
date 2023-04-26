@@ -40,6 +40,12 @@ body {
     height: 45px;
 }
 
+#colorPicker {
+    margin-top: 25px;
+    width: 250px;
+    height: 250px;
+}
+
 .pressed {
     background-color: lightgrey;
 }
