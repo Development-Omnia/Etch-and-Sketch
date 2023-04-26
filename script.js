@@ -1,6 +1,7 @@
 let grid = document.querySelector(".grid-div");
 let grids = document.querySelector(".grids")
 let body = document.querySelector("body")
+let colour = "black";
 
 body.addEventListener("mouseup", () => {
     isPressed=false;
@@ -11,6 +12,8 @@ let gridBorder;
 
 firstLoad()
 
+
+//generates the grid on website load at a default of 16x16
 function firstLoad(){
     let gridLabels = document.querySelectorAll('#range-value');
     for (let i = 0; i < gridLabels.length; i++) {
@@ -21,6 +24,9 @@ function firstLoad(){
 }
 
 let isPressed = false;
+
+
+//generates the grid based on the given dimensions adds a listener on the elements for a click/click drag
 function genGrid(columns, rows){
     gridBorder = true
     grid.style.display = "grid";
@@ -34,45 +40,37 @@ function genGrid(columns, rows){
         div.setAttribute("draggable", "false")
         div.addEventListener("mousedown", () => {
             isPressed=true;
-            div.setAttribute("style", "background-color:black;")
+            div.setAttribute("style", `background-color:${colour};`)
         })
         div.addEventListener("mouseup", () => {
             isPressed=false;
         })
         div.addEventListener("mouseover", () => {
             if(isPressed===true){
-                if(eraser == true){
-                    div.removeAttribute("style");
-                }
-                div.setAttribute("style", "background-color:black;")
+                div.setAttribute("style", `background-color:${colour};`)
             }
         })
         grid.appendChild(div);
     }
 }
 
-// disabled as is not complete
-
-// function toggleEraser(){
-//     let gridItems = document.getElementsByClassName('grid-item')
-//     if(eraser == false){
-//         console.log(eraser)
-//         return eraser = true
-//     }
-//     if(eraser == true ) {
-//         console.log(eraser)
-//         return eraser = false
-//     }
-
-// }
-
-// if (eraser){
-//     e.target.style.backgroundColor = '';
-
-// }
+//changes the colour of drawn elements to simulate erasing
+function toggleEraser(){
+    let eraserButton = document.getElementById('eraserBtn')
+    if(eraser == false){
+        colour = "white";
+        eraserButton.setAttribute("class", "btn pressed");
+        return eraser = true
+    }
+    if(eraser == true ) {
+        colour = "black";
+        eraserButton.setAttribute("class", "btn");
+        return eraser = false
+    }
+}
 
 
-
+//enables or disables the grid by drawing a border on the bottom and right of each pixel(avoids buly center lines)
 function toggleGrid(){
     let gridItems = document.getElementsByClassName('grid-item')
 
@@ -92,6 +90,7 @@ function toggleGrid(){
 
 }
 
+//removes any drawn pixels on the canvas
 function clearGrid(){
     let gridItems = document.getElementsByClassName('grid-item')
 
@@ -101,32 +100,31 @@ function clearGrid(){
 }
 
 
+//updates grid size based on selected slider value
+function rangeSlider(value) {
+let gridLabels = document.querySelectorAll('#range-value');
+for (let i = 0; i < gridLabels.length; i++) {
+    gridLabels[i].textContent = value;
+}
+document.querySelectorAll('#range-value').textContent = value;
+gridSize = parseInt(value);
 
-  function rangeSlider(value) {
-    let gridLabels = document.querySelectorAll('#range-value');
-    for (let i = 0; i < gridLabels.length; i++) {
-      gridLabels[i].textContent = value;
-    }
-    document.querySelectorAll('#range-value').textContent = value;
-    gridSize = parseInt(value);
+setPPS(gridSize);
+}
 
-    setPPS(gridSize);
-
-  }
-
-  function rangeSliderValue(value) {
-    let gridLabels = document.querySelectorAll('#range-value');
-    for (let i = 0; i < gridLabels.length; i++) {
-      gridLabels[i].textContent = value;
-    }
-  }
-
-
+//updates the displayed value below the slider
+function rangeSliderValue(value) {
+let gridLabels = document.querySelectorAll('#range-value');
+for (let i = 0; i < gridLabels.length; i++) {
+    gridLabels[i].textContent = value;
+}
+}
 
 
 
+
+//sets the amount of pixels per side of grid
 function setPPS(amt) {
-    // let pps = document.getElementById("pps").value;
     let pps = amt
     if(pps > 64) {
         return alert("Pixels per side cant exceed 64")
