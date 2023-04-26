@@ -34,13 +34,7 @@ body {
     justify-content: center;
 }
 
-.toggleGrid{
-    margin-top: 25px;
-    width: 250px;
-    height: 45px;
-}
-
-.clearBtn{
+.btn{
     margin-top: 25px;
     width: 250px;
     height: 45px;

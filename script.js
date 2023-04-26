@@ -5,8 +5,6 @@ let body = document.querySelector("body")
 body.addEventListener("mouseup", () => {
     isPressed=false;
 })
-// let rows = 16;
-// let columns = 16;
 
 let eraser = false;
 let gridBorder;
