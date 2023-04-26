@@ -1,0 +1,43 @@
+let grid = document.querySelector(".grid-div");
+let grids = document.querySelector(".grids")
+
+let rows = 16;
+let columns = 16;
+
+grid.style.display = "grid";
+grid.style.setProperty("grid-template-columns", `repeat(${columns},1fr)`);
+grid.style.setProperty('grid-template-rows', `repeat(${rows},1fr)`);
+
+genGrid(rows,columns)
+
+
+function genGrid(col,row){
+    for(i = 0; i< col*row; i++){
+        let div = document.createElement("div");
+        div.classList.add("grid-item")
+        div.style.border = "1px solid black";
+        div.addEventListener("mouseover", () => {
+            div.setAttribute("style", "background-color:blue;")
+        })
+        grid.appendChild(div);
+    }
+}
+
+
+function mouseOver(){
+    grid.setAttribute("style", "background-color:blue;")
+}
+
+function othername() {
+    let newRows = document.getElementById("rows").value;
+    let newColumns = document.getElementById("columns").value;
+    let gridItems = document.getElementsByClassName('grid-item');
+
+    while(gridItems[0]) {
+        gridItems[0].parentNode.removeChild(gridItems[0]);
+    }
+    
+    
+    genGrid(newRows,newColumns);
+    console.log(rows)
+}
