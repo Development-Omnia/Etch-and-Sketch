@@ -40,6 +40,9 @@ body {
     height: 45px;
 }
 
+.pressed {
+    background-color: lightgrey;
+}
 
 .grid-div {
     width: 500px;
