@@ -7,6 +7,7 @@ body.addEventListener("mouseup", () => {
     isPressed=false;
 })
 
+let rgb = false
 let eraser = false;
 let gridBorder;
 
@@ -145,3 +146,26 @@ let colorPicker = document.getElementById("colorPicker");
 colorPicker.addEventListener('change', (e) => {
     colour = e.target.value;
 });
+
+
+//rgb pen logic
+function toggleRGB(){
+    let rgbButton = document.getElementById('rgbBtn')
+    // if(rgb == false){
+        // rgbButton.setAttribute("class", "btn pressed");
+        let randomColour = Math.floor(Math.random()*16777215).toString(16)
+        if(randomColour === 000000) randomColour = 123456;
+
+        colour = `#${randomColour}`
+        
+        console.log(colour)
+    //     return rgb = true
+    // }
+    // if(rgb == true ) {
+    //     colour = "#000000"
+    //     rgbButton.setAttribute("class", "btn");
+    //     return rgb = false
+    // }
+}
+//toggle feature temporarily disabled as is nto needed with current implementation
+//pottentially needed for rainbow pen mode 
